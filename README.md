@@ -1,31 +1,72 @@
-# Installation instructions
+# Installation steps for Ku and Landlab
+## Permamodel setup
+1. Make a new directory for the hackthon
+2. In this directory, clone the permamodel repository: https://github.com/permamodel/permamodel.
+    - Open the link in a web browser
+    - Click the green `Clone or download` button
+    - Copy the link
+    - Open a Terminal window
+    - Type `git clone X`, where `X` is the copied link
+    - Press Enter
+    - This should make a new subfolder called `permamodel`
+3. Make three additional subfolders in the main directory:
+    - data/
+    - inputs/
+    - outputs/
 
-## Anaconda
-If you do not already have a Python installation, go to https://docs.anaconda.com/anaconda/install/ and follow their instructions. To run the Ku model notebooks, you will need a working Python 2 installation, along with a few other packages.
+## Anaconda installation
+The Ku model is developed for Python 2.x, while Landlab and the majority of the scientific computing ecosystem has moved to Python 3.x. Because of this, we will need two different Anaconda "environments": groups of packages, including Python itself, that are kept separately from one another. This will allow us to switch back and forth between major versions of Python as necessary.
 
-1. Create a new conda environment
-    - In a Terminal window, type `conda create --name X python=2.7`, where `X` is a name you choose for the environment
-    - Then, type `conda activate X` to activate the environment
-    - Use `conda list` to check the packages installed in the active environment
-    - Use `conda env list` to see all of your conda environments
+If you do not already have an Anaconda installation, go to [this link](https://docs.anaconda.com/anaconda/install/) and follow the instructions. 
 
-2. Install a few required packages
-    - Make sure to type `conda activate X` to activate your environment
-    - To get packages, use `conda install PACKAGE`, where `PACKAGE` is the name of the package you would like to install
-    - To run the Ku model notebooks, you will need:
-        - `conda install jupyterlab`
-        - `conda install matplotlib`
-        - `conda install Basemap`
-        - `conda install netcdf4`
-        - `conda install -c conda-forge landlab`
+In addition to base Python, we will need a few extra packages. First, for Python 2:
+1. Open a Terminal
+2. Type `conda create --name MYENV python=2.7`, where `MYENV` is whatever you would like to name the new environment.
+3. Press Enter
+4. Type `y` and then Enter.
+5. Type `conda activate MYENV` and press Enter
+6. Type `conda install jupyter jupyterlab matplotlib netcdf4 Basemap`
+7. Press Enter, then type `y` and press Enter
+8. Type `jupyter-lab` to open a new Jupyter notebook!
 
-3. To open a new instance of Jupyter:
-    - `conda activate X`, where `X` is the environment you made in step 1
-    - `jupyter lab`
-    - This *should* open a browser window, unless you are running bash on Windows or haven't configured a default browser
-        - You can always manually open a new browser tab and copy-paste the link from your terminal
+Then, for Python 3:
+1. Open a Terminal
+2. Type `conda create --name MYENV2`, where `MYENV2` is a different name than whatever you used above. 
+3. Press Enter
+4. Type `y` and then Enter.
+5. Type `conda activate MYENV2` and press Enter
+6. Type `conda install jupyter jupyterlab matplotlib rasterio netcdf4`
+7. Press Enter, then type `y` and press Enter
+8. Type `conda install -c conda-forge landlab`
+9. Press Enter, then type `y` and press Enter
+10. Type `jupyter-lab` to open a new Jupyter notebook!
 
-## Sharing materials
+Important note: you can have two Jupyter lab instances running simultaneously. Just use a new Terminal window for each one, and activate the appropriate conda environment before launching Jupyter.
+
+Depending on how your default browser is configured, Jupyter might not launch automatically. If this happens to you, copy & paste the link from your Terminal window into a new browser tab. (The link will start with http://localhost ...)
+
+If you are new to using Anaconda, I highly recommend [this cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf).
+
+## Check that things work
+There are two Python scripts in the setup/ folder in this repository. Download both to your main hackathon folder. There is also a configuration file, called `ku-hackathon-test.cfg`. Download this to your inputs/ directory. 
+
+To test your Ku installation:
+1. Open a Terminal window and navigate to your hackathon folder
+2. Type `conda activate X`, where `X` is the name of your Python 2 environment.
+3. Press Enter.
+4. Type `python `test-ku-for-hackathon.py`
+5. Press Enter
+
+To test your Python 3 installation:
+1. Open a Terminal window and navigate to your hackathon folder
+2. Type `conda activate X`, where `X` is the name of your Python 3 environment.
+3. Press Enter.
+4. Type `python `test-packages-for-hackathon.py`
+5. Press Enter
+
+If everything runs without errors, you are good to go! If you run into problems, send an email to ethan.pierce@colorado.edu and I'll do my best to help troubleshoot.
+
+## Sharing materials with GitHub
 Feel free to use this repository to host presentations, Jupyter notebooks, notes, or anything else you would like to share. To do so:
 
 1. Fork the repository:
