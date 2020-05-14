@@ -6,6 +6,7 @@
     - Click the green `Clone or download` button
     - Copy the link
     - Open a Terminal window
+    - Navigate to your hackathon directory
     - Type `git clone X`, where `X` is the copied link
     - Press Enter
     - This should make a new subfolder called `permamodel`
